@@ -9,8 +9,33 @@
 Використовувати стандартні функції
 */
 
-    $arrayRandNames = [];
+    $arrayRandSurname = ["Іванов", "Петров", "Сидоров", "Косарєв"];
+    $arrayRandName = ["Петро", "Іван", "Коля", "Ваня"];
 
-    $arrayStudents =
+    function arrayStudents($arrayRandSurname, $arrayRandName){
+        if (count($arrayRandName) === count($arrayRandSurname)){
+
+            $arrayResult = array_combine($arrayRandSurname, $arrayRandName);
+            ksort($arrayResult);
+
+            function printResult($arrayResult){
+
+                foreach ($arrayResult as $key => $value){
+                    yield $key . " " . $value . " (" . strlen(utf8_decode($key)) . ")";
+                }
+
+            }
+
+            foreach (printResult($arrayResult) as $value){
+                echo $value . "<br>";
+            }
+
+        }
+        else{
+            echo "Warning!";
+        }
+    }
+
+    arrayStudents($arrayRandSurname, $arrayRandName);
 
 ?>
