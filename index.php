@@ -9,33 +9,34 @@
 Використовувати стандартні функції
 */
 
-    $arrayRandSurname = ["Іванов", "Петров", "Сидоров", "Косарєв"];
-    $arrayRandName = ["Петро", "Іван", "Коля", "Ваня"];
+    $arrayStudents[0]["surname"]="Іванов";
+    $arrayStudents[0]["name"]   ="Петро";
 
-    function arrayStudents($arrayRandSurname, $arrayRandName){
-        if (count($arrayRandName) === count($arrayRandSurname)){
+    $arrayStudents[1]["surname"]="Петров";
+    $arrayStudents[1]["name"]   ="Іван";
 
-            $arrayResult = array_combine($arrayRandSurname, $arrayRandName);
-            ksort($arrayResult);
+    $arrayStudents[2]["surname"]="Сидоров";
+    $arrayStudents[2]["name"]   ="Коля";
 
-            function printResult($arrayResult){
+    $arrayStudents[3]["surname"]="Косарєв";
+    $arrayStudents[3]["name"]   ="Григорій";
 
-                foreach ($arrayResult as $key => $value){
-                    yield $key . " " . $value . " (" . strlen(utf8_decode($key)) . ")";
-                }
+    function setStudents($arrayStudents){
 
-            }
+        function printResult($arrayStudents){
 
-            foreach (printResult($arrayResult) as $value){
-                echo $value . "<br>";
-            }
+             for ($i = 0; $i < 4; $i++){
+                 yield $arrayStudents[$i]["surname"] . " " . $arrayStudents[$i]["name"] . " (" . strlen(utf8_decode($arrayStudents[$i]["surname"])) . ")";
+              }
 
         }
-        else{
-            echo "Warning!";
+
+        foreach (printResult($arrayStudents) as $value){
+            echo $value . "<br>";
         }
+
     }
 
-    arrayStudents($arrayRandSurname, $arrayRandName);
+    setStudents($arrayStudents);
 
 ?>
