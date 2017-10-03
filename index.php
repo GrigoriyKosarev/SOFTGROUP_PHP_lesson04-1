@@ -25,9 +25,10 @@
 
         function printResult($arrayStudents){
 
-             for ($i = 0; $i < 4; $i++){
+             for ($i = 0; $i < count($arrayStudents); $i++){
                  yield $arrayStudents[$i]["surname"] . " " . $arrayStudents[$i]["name"] . " (" . strlen(utf8_decode($arrayStudents[$i]["surname"])) . ")";
-              }
+                 //echo $arrayStudents[$i]["surname"] . " " . $arrayStudents[$i]["name"] . " (" . strlen(utf8_decode($arrayStudents[$i]["surname"])) . ")<br>";
+             }
 
         }
 
